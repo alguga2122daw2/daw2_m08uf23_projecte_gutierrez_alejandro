@@ -22,42 +22,57 @@
 	    "title" => "analista",
 	    "description" => "analista de sistemes"
 	];
+	
+	function html_input($only_uid_ou){
+	    global $input_fields;
+	    
+	    foreach ($input_fields as $key => $value) {
+	        echo "<label for='$key'>$key</label>\n";
+	        echo "<input id='$key' name='$key' placeholder='$value' value='$value' required />\n";
+	        echo "<br/>\n";
+	        if ($only_uid_ou == true && $key == "ou") break;
+	    }
+	}
 	?>
-	<h2>1. Read</h2>
-	<form action="read.php" method="GET">
-		<label for="uid">uid</label>
-		<input id="uid" name="uid" placeholder="usr1" value="usr1" required />
-		<br/>
-		<label for="ou">ou</label>
-		<input id="ou" name="ou" placeholder="usuaris" value="usuaris" required />
-		<br/>
-		<input type="submit" value="Submit" />
-	</form>
-	<h2>2. Create</h2>
+	<h2>Create</h2>
 	<form action="create.php" method="POST">
 		<?php
-		foreach ($input_fields as $key => $value) {
-		    echo "<label for='".$key."'>".$key."</label>\n";
-		    echo "<input id='".$key."' name='".$key."' placeholder='".$value."' value='".$value."' required />\n";
-		    echo "<br/>\n";
-		}
+		html_input(false);
 		?>
 		<input type="submit" value="Submit" />
 	</form>
-	<h2>3. Delete</h2>
+	<h2>Read</h2>
+	<form action="read.php" method="GET">
+		<?php
+		html_input(true);
+		?>
+		<input type="submit" value="Submit" />
+	</form>
+	<h2>Update</h2>
+	<form action="update.php" method="POST">
+		<?php
+		html_input(true);
+		?>
+		<br>
+		<label for="field">field</label>
+		<select name="field" id="field" required>
+			<?php
+			foreach ($input_fields as $key => $value) {
+			    echo "<option value='$key'>$key</option>\n";
+			    echo "<br/>\n";
+			}
+			?>
+		</select>
+		<label for="value">value</label>
+		<input id="value" name="value" placeholder="test" value="test" />
+		<br>
+		<input type="submit" value="Submit" />
+	</form>
+	<h2>Delete</h2>
 	<form action="delete.php" method="POST">
 		<?php
-		foreach ($input_fields as $key => $value) {
-		    echo "<label for='".$key."'>".$key."</label>\n";
-		    echo "<input id='".$key."' name='".$key."' placeholder='".$value."' value='".$value."' required />\n";
-		    echo "<br/>\n";
-		    if ($key == "ou") break;
-		}
+		html_input(true);
 		?>
-		<input type="submit" value="Submit" />
-	</form>
-	<h2>4. Update</h2>
-	<form action="update.php" method="POST">
 		<input type="submit" value="Submit" />
 	</form>
 </body>
