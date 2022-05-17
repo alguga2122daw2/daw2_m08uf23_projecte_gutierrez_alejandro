@@ -1,3 +1,6 @@
+<?php
+include 'check_auth.php';
+?>
 <html>
 <head>
 	<title>Delete <?php echo $_POST["uid"]?></title>
@@ -34,6 +37,6 @@ try{
 }
 ?>
 <br/>
-<a href="index.php">Tornar a l'index</a>
+<a href="menu.php">return to menu</a>
 </body>
 </html>

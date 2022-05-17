@@ -1,3 +1,6 @@
+<?php
+include 'check_auth.php';
+?>
 <html>
 <head>
 	<title>Read <?php echo $_GET["uid"]?></title>
@@ -24,6 +27,6 @@ foreach ($usuari as $atribut => $dada) {
 }
 ?>
 <br/>
-<a href="index.php">Tornar a l'index</a>
+<a href="menu.php">return to menu</a>
 </body>
 </html>

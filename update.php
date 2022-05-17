@@ -1,3 +1,6 @@
+<?php
+include 'check_auth.php';
+?>
 <html>
 <head>
 	<title>Update <?php echo $_POST["uid"]?></title>
@@ -35,6 +38,6 @@ if ($entrada){
 } else echo "<b>Aquesta entrada no existeix</b>";
 ?>
 <br/>
-<a href="index.php">Tornar a l'index</a>
+<a href="menu.php">return to menu</a>
 </body>
 </html>

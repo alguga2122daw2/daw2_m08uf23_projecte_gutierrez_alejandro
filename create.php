@@ -1,3 +1,6 @@
+<?php
+include 'check_auth.php';
+?>
 <html>
 <head>
 	<title>Create <?php echo $_POST["uid"]?></title>
@@ -42,6 +45,6 @@ $dn = 'uid='.$_POST["uid"].',ou='.$_POST["ou"].','.$domini;
 if($ldap->add($dn, $nova_entrada)) echo "Usuari creat";
 ?>
 <br/>
-<a href="index.php">Tornar a l'index</a>
+<a href="menu.php">return to menu</a>
 </body>
 </html>
